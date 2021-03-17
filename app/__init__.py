@@ -4,8 +4,7 @@ from app.models import db
 #ициниализируем Flask-приложение
 def create_app():
     app = Flask(__name__)
-    basedir = os.path.abspath(os.path.dirname(__file__))
-    SQLAlchemy_DATABASE_URL = 'sqlite:///'+ os.path.join(basedir, '..', 'app.db')
+    app.config.from_pyfile('config.py')
     db.init.app(app)
 
     @app.route('/login')
@@ -17,6 +16,5 @@ def create_app():
     def Error():
         #return render_template('error.html')    
         return redirect ('/login')
-
-        
-return app
+       
+    return app
