@@ -1,11 +1,10 @@
-import os
 from flask import Flask, render_template, redirect
 from app.models import db
 #ициниализируем Flask-приложение
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
-    db.init.app(app)
+    db.init_app(app)
 
     @app.route('/login')
     def login():
