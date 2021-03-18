@@ -3,6 +3,6 @@ import app
 from flask_sqlalchemy import SQLAlchemy
 
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLAlchemy_DATABASE_URl = f"sqlite:///{os.path.abspath(os.path.dirname(__file__))}, app.db"
+from pathlib import Path
+basedir = Path(__file__).resolve().parent
+SQLALCHEMY_DATABASE_URI = f'sqlite:///{basedir}/app.db'
