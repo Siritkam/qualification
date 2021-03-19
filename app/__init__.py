@@ -6,14 +6,20 @@ def create_app():
     app.config.from_pyfile('config.py')
     db.init_app(app)
 
-    @app.route('/login')
-    def login():
-        return render_template('login.html')
-
 
     @app.route('/')
     def Error():
         #return render_template('error.html')    
         return redirect ('/login')
-       
+
+
+    @app.route('/login')
+    def login():
+        return render_template('login.html')
+
+
+    @app.route('/control')
+    def control():
+        return render_template('control.html')
+ 
     return app

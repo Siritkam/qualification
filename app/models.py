@@ -6,9 +6,9 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    u_name = db.Column(db.String, unique=True)
-    u_password = db.Column(db.String, unique=False)
-    u_role = db.Column(db.String)
+    u_name = db.Column(db.String(64), index=True, unique=True)
+    u_password = db.Column(db.String(128), unique=False)
+    u_role = db.Column(db.String, index=True)
 
 
 def __repr__(self):
