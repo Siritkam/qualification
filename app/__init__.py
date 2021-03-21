@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, flash, url_for
+from flask import Flask, render_template, redirect, flash, url_for, request
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from app.models import db, User
 from app.forms import LoginForm
@@ -26,17 +26,21 @@ def create_app():
     @app.route('/login')
     def login():
         if current_user.is_authenticated:
-            return redirect(url_for('/'))
-
+            redirect_path = request.args.get('next', '/')
+            return redirect(redirect_path)
+        
         login_form = LoginForm()
         return render_template('login.html', form=login_form)
-
+        
+#помнить про request
     @app.route('/process-login', methods=['POST'])
     def process_login():
         form = LoginForm()
+        form_user, form_pass = form.userform.data, form.passform.data
+        
         if form.validate_on_submit():
-            user = User.query.filter(User.u_login == form.userform.data).first()
-            if user and user.check_password_hash(form.passform.data):
+            user = User.query.filter_by(u_login = form_user).first()
+            if user and user.check_password_hash(form_pass):
                 login_user(user)
                 #flash('Вы вошли на сайт')
                 return redirect(url_for('control'))
@@ -51,8 +55,8 @@ def create_app():
         return redirect(url_for('login'))
 
     @app.route('/control')
+    @login_required
     def control():
-        form1 = logout_user()
-        return render_template('control.html', form='logout_user')
+        return render_template('control.html')
  
     return app

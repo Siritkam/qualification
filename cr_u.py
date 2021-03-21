@@ -28,4 +28,4 @@ new_user.set_password(password)
 
 db.session.add(new_user)
 db.session.commit() 
-print('Создан пользователь: id-{}'.format(new_user.id))
+print('Создан пользователь: id-{} {}'.format(new_user.id, new_user.u_name))

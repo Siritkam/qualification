@@ -2,6 +2,7 @@
     <head><title>Панель администратора</title></head>
     <body>
         <div name="first_bookmark" class="form-group">
+            <h1> {{ current_user.u_name }} </h1>
             <h1>Добавление нового пользователя</h1>
             <form action="" method="POST">
                 <label>Имя пользователя:</label><br>
@@ -16,7 +17,9 @@
                         <option value="recruiter">Recruiter</option>
                         <option value="supervisor">Supervisor</option>
                     </select><br><br>
-                    <input type="submit" value="Добавить" name="user_add">
+                    <input type="submit" value="Добавить" name="user_add"><br><br>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                    
             </form>
         </div>
            
