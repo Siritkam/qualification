@@ -1,0 +1,32 @@
+<html>
+        <head>
+            <title>Авторизация</title>
+        </head>
+        <body align=center bgcolor="f2f2f2">
+            <div class="form_base">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-warning" role='alert'>
+                    {% for message in messages %}
+                        {{ message }}<br>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                <form action="{{ url_for('process_login') }}" method="POST">
+                    
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.userform.label }}
+                        {{ form.userform() }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.passform.label }}
+                        {{ form.passform() }}
+                    </div>
+                    {{ form.submit() }}
+                </form>
+            </div>
+        </body>
+    </html>    

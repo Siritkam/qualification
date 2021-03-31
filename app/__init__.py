@@ -40,10 +40,11 @@ def create_app():
         
         if form.validate_on_submit():
             user = User.query.filter_by(u_login = form_user).first()
-            if user and user.check_password_hash(form_pass):
-                login_user(user)
-                #flash('Вы вошли на сайт')
-                return redirect(url_for('control'))
+
+        if user and user.check_password_hash(form_pass):
+            login_user(user)
+            #flash('Вы вошли на сайт')
+            return redirect(url_for('control'))
 
         flash('Неправильное имя пользователя или пароль')
         return redirect(url_for('login'))

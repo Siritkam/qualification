@@ -1,30 +1,39 @@
-<html>
-        <head>
-            <title>Авторизация</title>
-        </head>
-        <body align=center bgcolor="f2f2f2">
-            <div class="form_base">
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <div class="alert alert-warning" role='alert'>
-                    {% for message in messages %}
-                        {{ message }}<br>
-                        {% endfor %}
-                </div>
-                {% endif %}
-                {% endwith %}
-                <form action="{{ url_for('process_login') }}" method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group">
-                        {{ form.userform.label }}
-                        {{ form.userform() }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.passform.label }}
-                        {{ form.passform() }}
-                    </div>
-                    {{ form.submit() }}
-                </form>
-            </div>
-        </body>
-    </html>    
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Авторизация</title>
+
+    <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">-->
+
+    <!-- Bootstrap core CSS -->
+    <link href={{ url_for('static', filename='bootstrap.min.css') }} rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href={{ url_for('static', filename='signin.css') }} rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <form class="form-signin">
+      <!--<img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+      <h1 class="h3 mb-3 font-weight-normal">Введите логин и пароль</h1>
+      <label for="inputEmail" class="sr-only">Логин</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Логин" required autofocus>
+      <label for="inputPassword" class="sr-only">Пароль</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Запомнить меня
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+      <p class="mt-5 mb-3 text-muted"> 2021</p>
+    </form>
+  </body>
+</html>
+
