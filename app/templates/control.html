@@ -1,8 +1,42 @@
 <html>
     <head><title>Панель администратора</title></head>
+
+    <style>
+    .form-group, .second_bookmark{
+     float: left; 
+     line-height: 20px;
+     font-size: 12px;
+     margin-top: 20px;
+     margin-left: 10px;
+     width: 320px; 
+     margin-right: 10px;
+     text-align: left; 
+     background-color: ghostwhite;
+     outline: 2px; 
+    }
+    .elements{
+        float: top;
+        font-size: 24px;
+        line-height: 20px;
+        margin-top: 5px;
+        margin-left: 30px;
+        text-align: left;
+        width: 150px;
+        background-color: ghostwhite;
+    }
+    h3{
+        font-size: 14px;
+        text-align: right;
+    }
+    </style>
+
     <body>
-        <div name="first_bookmark" class="form-group">
-            <h1> {{ current_user.u_name }} </h1>
+        <div class='elements'>
+        {{ current_user.u_name }}<br>
+        <h3><a href="{{ url_for('logout') }}">Logout</a></h3>
+        </div>
+        <div id="first_bookmark" class="form-group" > 
+                        
             <h1>Добавление нового пользователя</h1>
             <form action="" method="POST">
                 <label>Имя пользователя:</label><br>
@@ -13,14 +47,23 @@
                     <select name="user_role" id="user_role">
                         <option value="empty"> </option>
                         <option value="admin">Admin</option>
+                        <option value="admin">it</option>
                         <option value="accauntant">Accauntant</option>
                         <option value="recruiter">Recruiter</option>
                         <option value="supervisor">Supervisor</option>
                     </select><br><br>
                     <input type="submit" value="Добавить" name="user_add"><br><br>
-                    <a href="{{ url_for('logout') }}">Logout</a>
+                    
                     
             </form>
+        </div>
+        <div class='second_bookmark'>
+            <h1>Рабочие модули</h1>
+            <ul>
+                <a href="{{ url_for('dit') }}"><li>Анализ бюджета ДИТ</li></a>
+                <a href="{{ url_for('drp') }}"><li>Анализ отчета телефонии КЦ</li></a>
+            </ul>
+        
         </div>
            
     </body>

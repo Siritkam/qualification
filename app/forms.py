@@ -4,9 +4,9 @@ from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
     #логин пользователя
-    userform = StringField('Имя пользователя', validators=[DataRequired()], render_kw={"class": "form-control"})
-    passform = PasswordField('Пароль', validators=[DataRequired()], render_kw={"class": "form-control"})
+    userform = StringField('', validators=[DataRequired()], render_kw={"class": "form-control"})
+    passform = PasswordField('', validators=[DataRequired()], render_kw={"class": "form-control"})
     submit = SubmitField('Отправить', render_kw={"class": "btn btn-primary"})
 
 class logout_user(FlaskForm):
-    submit_logout = SubmitField("Выйти", render_kw={"class": "btn btn-primary"})
+    submit_logout = SubmitField("Выйти", render_kw={"class": "btn btn-lg btn-primary btn-block"})

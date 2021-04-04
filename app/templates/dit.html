@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>ДИТ</title>
+
+    <style>
+        .elements{
+        float: top;
+        font-size: 24px;
+        line-height: 20px;
+        margin-top: 5px;
+        margin-left: 30px;
+        text-align: left;
+        width: 150px;
+        background-color: ghostwhite;
+    }
+        h3{
+        font-size: 14px;
+        text-align: right;
+    }
+        .upload{
+            float: left;
+            width: 150px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class='elements'>
+        {{ current_user.u_name }}
+        <h3><a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('control') }}">Back</a></h3>
+    </div>
+
+    <div class='upload'>
+
+    </div>
+
+
+
+    
+</body>
+</html>
