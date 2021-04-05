@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, flash, url_for, request
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from app.models import db, User, Role
 from app.forms import LoginForm
+from werkzeug.utils import secure_filename
+from app.config import MAX_FILE_SIZE
 
 #ициниализируем Flask-приложение
 def create_app():
@@ -66,7 +68,7 @@ def create_app():
     @login_required
     def dit():
         return render_template('dit.html')
-
+ 
 
     @app.route('/drp')
     @login_required

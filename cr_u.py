@@ -6,7 +6,7 @@ from app.models import User, db, Role
 
 app = create_app()
 app.app_context().push()
-
+#добавит в функцию
 with app.app_context():
     userlogin = input('Введите логин: ')
     username = input('Введите имя: ')

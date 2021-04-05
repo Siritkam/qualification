@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>ДИТ</title>
 
@@ -17,25 +16,33 @@
         width: 150px;
         background-color: ghostwhite;
     }
-        h3{
+        .top{
         font-size: 14px;
         text-align: right;
     }
         .upload{
             float: left;
-            width: 150px;
+            width: 1000px;
+            margin-left: 30px;
             text-align: left;
+            background-color: cornsilk;
         }
     </style>
 </head>
 <body>
     <div class='elements'>
         {{ current_user.u_name }}
-        <h3><a href="{{ url_for('logout') }}">Logout</a>
+        <h3 class='top'><a href="{{ url_for('logout') }}">Logout</a>
             <a href="{{ url_for('control') }}">Back</a></h3>
     </div>
 
     <div class='upload'>
+        
+        <form action='dit' method="POST", enctype="multipart/form-data">
+            <h3>Загрузка файла</h3>
+            <input type="file" name='file'><br><br>
+            <button type='submit'>Загрузить</button>
+        </form>
 
     </div>
 
