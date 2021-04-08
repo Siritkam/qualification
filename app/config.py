@@ -14,4 +14,4 @@ MAX_FILE_SIZE = 1024 * 1024 + 1
 #basedir = Path(__file__).resolve().parent
 #SQLALCHEMY_DATABASE_URI = f'sqlite:///{basedir}/core.db'
 
-SQLALCHEMY_DATABASE_URI = (f'postgresql://postgres:postgres@localhost:5432/postgres')
+SQLALCHEMY_DATABASE_URI = f'postgresql://Admin:0990DoomMetal@localhost:5433/coredb'

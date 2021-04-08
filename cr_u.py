@@ -2,7 +2,7 @@ from getpass import getpass
 import sys
 
 from app import create_app
-from app.models import User, db, Role
+from app.models import User, db, Accesses
 
 app = create_app()
 app.app_context().push()
@@ -13,7 +13,7 @@ with app.app_context():
     usermail = userlogin
     userrole = input('Введите роль пользователя (Admin, it, Accauntant, Recruiter, Supervisor)')
 
-    if User.query.filter(User.u_login == userlogin).count():
+    if User.query.filter(User.login == userlogin).count():
         print('Такой пользователь уже существует')
         sys.exit(0)
 
@@ -24,10 +24,14 @@ with app.app_context():
         print('Пароли не совпадают')
         sys.exit(0)
 
-new_user = User(u_login=userlogin, u_name=username, u_mail=usermail)
+new_user = User(login=userlogin, name=username, mail=usermail)
 new_user.set_password(password)
-new_role = Role(u_login=userlogin, u_role=userrole)
 
-db.session.add(new_user, new_role)
-db.session.commit() 
-print('Создан пользователь: id-{} {} {}'.format(new_user.id, new_user.u_name, new_role.u_role))
+
+db.session.add(new_user)
+db.session.commit()
+
+new_role = Accesses(user_id=User.id, user_role=userrole)
+db.session.add(new_role)
+db.session.commit()
+print('Создан пользователь: id-{} {} {}'.format(new_user.id, new_user.name, new_role.user_role))
