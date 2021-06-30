@@ -43,7 +43,7 @@ def create_app():
         form_user, form_pass = form.userform.data, form.passform.data
         
         if form.validate_on_submit():
-            user = User.query.filter_by(u_login = form_user).first()
+            user = User.query.filter_by(login = form_user).first()
 
         if user and user.check_password_hash(form_pass):
             login_user(user)

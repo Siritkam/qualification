@@ -15,3 +15,5 @@ MAX_FILE_SIZE = 1024 * 1024 + 1
 #SQLALCHEMY_DATABASE_URI = f'sqlite:///{basedir}/core.db'
 
 SQLALCHEMY_DATABASE_URI = f'postgresql://Admin:0990DoomMetal@localhost:5433/coredb'
+
+#set FLASK_APP=app && flask run
